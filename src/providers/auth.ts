@@ -8,8 +8,10 @@ import { API_URL, dataProvider } from "./data";
  * For demo purposes and to make it easier to test the app, you can use the following credentials:
  */
 export const authCredentials = {
-  email: "mmbasujuma@gmail.com",
-  password: "password",
+  //email: "mmbasujuma@gmail.com",
+  //password: "password",
+  email: "michael.scott@dundermifflin.com",
+  password: "demodemo",
 };
 
 //export const authProvider: AuthProvider = {
@@ -108,7 +110,7 @@ export const authProvider: AuthBindings = {
 
     try {
         // callthe Grapgql API to get the user info
-      const { data } = await dataProvider.custom<{ me: User }>({
+      const { data } = await dataProvider.custom<{ me: any }>({
         url: API_URL,
         method: "post",
         headers: accessToken
