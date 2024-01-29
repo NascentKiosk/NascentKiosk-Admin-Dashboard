@@ -5,7 +5,6 @@ import {Home, ForgotPassword, Login, Register} from "./pages";
 
 import { useNotificationProvider } from "@refinedev/antd";
 import "@refinedev/antd/dist/reset.css";
-
 import { dataProvider, liveProvider, authProvider } from "./providers";
 import routerBindings, {
   CatchAllNavigate,
@@ -15,6 +14,7 @@ import routerBindings, {
 import { App as AntdApp } from "antd";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Layout from "./components/layouts";
+import { resources } from "./config/resources";
 
 
 
@@ -31,6 +31,7 @@ function App() {
                 notificationProvider={useNotificationProvider}
                 routerProvider={routerBindings}
                 authProvider={authProvider}
+                resources={resources}
                 options={{
                   syncWithLocation: true,
                   warnWhenUnsavedChanges: true,

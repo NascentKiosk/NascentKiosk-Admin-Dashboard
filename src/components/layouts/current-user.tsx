@@ -1,7 +1,54 @@
-import { Popover } from 'antd'
-
+import { Popover , Button, Flex} from 'antd'
+import CustomAvatar from '../custom-avatar'
+import { useGetIdentity } from '@refinedev/core'
+import type{User} from "@/graphql/schema.types"
+import { SettingOutlined } from '@ant-design/icons'
+import { useState } from 'react'
+import { Text} from '../text'
+import { AccountSettings } from './account-settings'
 
 const CurrentUser = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const {data : user} = useGetIdentity<User>()
+  const content = (
+    <div style={{
+      display: "flex",
+      flexDirection: "column",
+    }}>
+      <Text
+        strong
+        style= {{padding: "10px 18px"}}
+        >
+              {user?.name}
+      </Text>
+          <div
+            style={{
+              borderTop: "1px solod #d9d9d9",
+              display: "flex",
+              flexDirection: "colomn",
+              padding: "3.5px",
+              gap: "3px"
+            }}
+          >
+          <Button
+            style={{ textAlign:"left"}}
+            icon={<SettingOutlined/>}
+            type="text"
+            block 
+            onClick={() => setIsOpen(true)}
+
+          >
+            Account Settings
+          </Button>
+
+          </div>
+          
+      
+        
+
+
+    </div>
+  )
   return (
     <>
         <Popover
@@ -9,10 +56,24 @@ const CurrentUser = () => {
             trigger="click"
             overlayInnerStyle={{padding: 0}}
             overlayStyle={{zIndex:999}}
+            content = {content}
         >
-            TEST
+            <CustomAvatar 
+              name={user?.name}
+              src={user?.avatarUrl}
+              size="default"
+              style={{cursor: "pointer"}}
+            />
 
         </Popover>
+        {user && (
+        <AccountSettings 
+          opened={isOpen}
+          setOpened={setIsOpen}
+          userId={user.id}
+
+        />
+        )}
     </>
   )
 }
