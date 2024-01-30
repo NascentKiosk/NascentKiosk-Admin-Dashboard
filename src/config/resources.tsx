@@ -1,21 +1,31 @@
-import { DashboardOutlined, ProjectOutlined, ShopOutlined } from "@ant-design/icons";
-import{IResourceItem} from "refinedev/core";
+import { AppstoreOutlined, DashboardOutlined, ProjectOutlined, ShopOutlined } from "@ant-design/icons";
+import{IResourceItem} from "@refinedev/core";
 
 
 
-export const resources: IResourceItem[] = [
+interface IMenuTitle {
+    name: string;
+}
+
+export const resources: (IResourceItem | IMenuTitle)[] = [
     {
-        name:"dashboard", 
+        name: "Menu Title",
+        
+    },
+    
+    {
+        name: "App", 
         list: "/",
         meta: {
-            label: "Dashboard",
+            label: "App",
             icon: <DashboardOutlined />
         }
     },
+
     {
-        name:"Companies", 
+        name: "Companies", 
         list: "/companies",
-        create:"/create/new",
+        create: "/create/new",
         edit: "/companies/edit/id",
         meta: {
             label: "Companies",
@@ -24,14 +34,13 @@ export const resources: IResourceItem[] = [
     },
 
     {
-        name:"tasks", 
+        name: "Tasks", 
         list: "/tasks",
-        create:"/tasks/new",
+        create: "/tasks/new",
         edit: "/tasks/edit/id",
         meta: {
             label: "Tasks",
             icon: <ProjectOutlined />
         },
     }
-    
-]
+];
