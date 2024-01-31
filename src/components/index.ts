@@ -1,4 +1,4 @@
-import UpcomingEvents from "./home/newinvoice";
+import UpcomingEvents from "./home/todo-reminders";
 import DealsChart from "./home/deals-chart";
 import NewInvoiceSkeleton from "./skeleton/new-invoices-skeleton";
 import AccordionHeaderSkeleton from "./skeleton/accordion-header";
